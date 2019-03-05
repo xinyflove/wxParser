@@ -3,6 +3,7 @@ const elements = require('./elements');
 const startTagReg = /^<([-A-Za-z0-9_]+)((?:\s+[a-zA-Z_:][-a-zA-Z0-9_:.]*(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/;
 const endTagReg = /^<\/([-A-Za-z0-9_]+)[^>]*>/;
 const attrReg = /([a-zA-Z_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|([^>\s]+)))?/g;
+const removeReg = /(\w+".=""\s+)|("?\w+-?\w+.=""\s+)|(\w+."=""\s+)|(<\w+.\w+><\/\w+.\w+>)/g;// 标签内不规则字符串 @auth:peakxin<xinyflove@sina.com>
 
 /**
  * 解析 HTML
@@ -10,6 +11,7 @@ const attrReg = /([a-zA-Z_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|
  * @param {Object} handler 处理器
  */
 const parseHtml = (html, handler) => {
+  html = html.replace(removeReg, '');// 把标签内不规则字符串替换为空字符串 @auth:peakxin<xinyflove@sina.com>
   let index;
   let isText;
   let match;
