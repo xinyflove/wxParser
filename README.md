@@ -75,3 +75,7 @@ Page({
 - 不建议直接修改 `wxParser` 的默认样式（因为内容库样式会有定期更新），应该新增一个样式补丁文件用来自定义样式
 
 *说明：该项目是基于 [wxparse](https://github.com/icindy/wxParse) 做的改造，主要用于把在 [知晓云](https://cloud.minapp.com/) 中的 [富文本编辑器](https://github.com/ifanrx/react-ueditor) 编辑的内容，展示到微信小程序上
+
+### 更新日志
+
+2019-03-05 把标签内不规则字符串替换为空字符串 @auth:Peak Xin
